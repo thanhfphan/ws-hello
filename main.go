@@ -31,12 +31,14 @@ func main() {
 	}
 	s, err := service.New(p, cfg)
 	if err != nil {
-		panic(err)
+		logger.Fatal(fmt.Sprintf("service.New got err=%v", err))
+		return
 	}
 
 	err = s.Run()
 	if err != nil {
-		panic(err)
+		logger.Fatal(fmt.Sprintf("s.Run got err=%v", err))
+		return
 	}
 
 	go func() {
